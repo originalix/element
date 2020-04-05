@@ -40,6 +40,7 @@ export default {
           sums[index] = '';
         }
       });
+      sums = [sums];
     }
 
     return (
@@ -57,7 +58,8 @@ export default {
           }
         </colgroup>
         <tbody class={ [{ 'has-gutter': this.hasGutter }] }>
-          <tr>
+          {/* TODO: use showSelSummary and selSummaryMethod to manage selection summary */}
+          {sums.map((sumCell, sumIndex) => <tr key={sumIndex}>
             {
               this.columns.map((column, cellIndex) => <td
                 key={cellIndex}
@@ -66,7 +68,7 @@ export default {
                 class={ this.getRowClasses(column, cellIndex) }>
                 <div class={ ['cell', column.labelClassName] }>
                   {
-                    sums[cellIndex]
+                    sums[sumIndex][cellIndex]
                   }
                 </div>
               </td>)
@@ -75,6 +77,7 @@ export default {
               this.hasGutter ? <th class="gutter"></th> : ''
             }
           </tr>
+          )}
         </tbody>
       </table>
     );
@@ -97,6 +100,12 @@ export default {
         };
       }
     }
+  },
+
+  data() {
+    return {
+      summaryData: [1, 2]
+    };
   },
 
   computed: {
