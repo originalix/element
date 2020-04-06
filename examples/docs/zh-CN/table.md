@@ -2015,8 +2015,10 @@
 | default-sort | 默认的排序列的 prop 和顺序。它的`prop`属性指定默认的排序的列，`order`指定默认排序的顺序| Object | `order`: ascending, descending | 如果只指定了`prop`, 没有指定`order`, 则默认顺序是ascending |
 | tooltip-effect | tooltip `effect` 属性 | String | dark/light | | dark |
 | show-summary | 是否在表尾显示合计行 | Boolean | — | false |
+| show-sel-summary | 是否在表尾显示选中合计行 | Boolean | — | false |
 | sum-text | 合计行第一列的文本 | String | — | 合计 |
 | summary-method | 自定义的合计计算方法 | Function({ columns, data }) | — | — |
+| sel-summary-method | 自定义的选中合计计算方法, 选中合计行不会自动计算，必须通过此函数传递数组 | Function({ columns, data }) | — | — |
 | span-method | 合并行或列的计算方法 | Function({ row, column, rowIndex, columnIndex }) | — | — |
 | select-on-indeterminate | 在多选表格中，当仅有部分行被选中时，点击表头的多选框时的行为。若为 true，则选中所有行；若为 false，则取消选择所有行 | Boolean | — | true |
 | indent      | 展示树形数据时，树节点的缩进 | Number | — | 16 |
