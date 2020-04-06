@@ -72,6 +72,9 @@
         :border="border"
         :sum-text="sumText || t('el.table.sumText')"
         :summary-method="summaryMethod"
+        :show-sel-summary="showSelSummary"
+        :sel-sum-text="selSumText"
+        :sel-summary-method="selSummaryMethod"
         :default-sort="defaultSort"
         :style="{
           width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
@@ -133,6 +136,9 @@
           :border="border"
           :sum-text="sumText || t('el.table.sumText')"
           :summary-method="summaryMethod"
+          :show-sel-summary="showSelSummary"
+          :sel-sum-text="selSumText"
+          :sel-summary-method="selSummaryMethod"
           :store="store"
           :style="{
             width: bodyWidth
@@ -194,6 +200,8 @@
           :border="border"
           :sum-text="sumText || t('el.table.sumText')"
           :summary-method="summaryMethod"
+          :show-sel-summary="showSelSummary"
+          :sel-summary-method="selSummaryMethod"
           :store="store"
           :style="{
             width: bodyWidth
@@ -273,9 +281,13 @@
 
       showSummary: Boolean,
 
+      showSelSummary: Boolean,
+
       sumText: String,
 
       summaryMethod: Function,
+
+      selSummaryMethod: Function,
 
       rowClassName: [String, Function],
 
