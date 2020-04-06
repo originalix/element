@@ -42,6 +42,11 @@ export default {
       });
     }
 
+    let selSums = [];
+    if (this.selSummaryMethod) {
+      selSums = this.selSummaryMethod({ columns: this.columns, data: this.store.states.data });
+    }
+
     return (
       <table
         class="el-table__footer"
@@ -57,6 +62,27 @@ export default {
           }
         </colgroup>
         <tbody class={ [{ 'has-gutter': this.hasGutter }] }>
+          {/* TODO: use showSelSummary and selSummaryMethod to manage selection summary */}
+          {
+            this.showSelSummary ? <tr>
+              {
+                this.columns.map((column, cellIndex) => <td
+                  key={cellIndex}
+                  colspan={ column.colSpan }
+                  rowspan={ column.rowSpan }
+                  class={ this.getRowClasses(column, cellIndex) }>
+                  <div class={ ['cell', column.labelClassName] }>
+                    {
+                      selSums[cellIndex]
+                    }
+                  </div>
+                </td>)
+              }
+              {
+                this.hasGutter ? <th class="gutter"></th> : ''
+              }
+            </tr> : ''
+          }
           <tr>
             {
               this.columns.map((column, cellIndex) => <td
@@ -86,7 +112,9 @@ export default {
       required: true
     },
     summaryMethod: Function,
+    selSummaryMethod: Function,
     sumText: String,
+    showSelSummary: Boolean,
     border: Boolean,
     defaultSort: {
       type: Object,
