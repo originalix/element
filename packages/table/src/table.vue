@@ -73,7 +73,6 @@
         :sum-text="sumText || t('el.table.sumText')"
         :summary-method="summaryMethod"
         :show-sel-summary="showSelSummary"
-        :sel-sum-text="selSumText"
         :sel-summary-method="selSummaryMethod"
         :default-sort="defaultSort"
         :style="{
@@ -137,7 +136,6 @@
           :sum-text="sumText || t('el.table.sumText')"
           :summary-method="summaryMethod"
           :show-sel-summary="showSelSummary"
-          :sel-sum-text="selSumText"
           :sel-summary-method="selSummaryMethod"
           :store="store"
           :style="{
